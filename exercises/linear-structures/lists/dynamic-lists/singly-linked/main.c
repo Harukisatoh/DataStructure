@@ -1,3 +1,7 @@
+/*
+ * @author: Gabriel Haruki Gomes Satô
+ */
+
 //WIP - Falta as buscas
 
 //DEFINES E INCLUDES

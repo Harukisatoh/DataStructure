@@ -1,3 +1,7 @@
+/*
+ * @author: Gabriel Haruki Gomes Satô
+ */
+
 //DEFINES E INCLUDES
 //DEFINES AND INCLUDES
 #include "prototypes.h" //Inclusão do arquivo "prototypes.h" / Inclusion of the file "prototypes.h"

@@ -1,3 +1,7 @@
+/*
+ * @author: Gabriel Haruki Gomes Satô
+ */
+
 //FUNÇÕES E PROCEDIMENTOS
 //FUNCTIONS AND PROCEDURES
 

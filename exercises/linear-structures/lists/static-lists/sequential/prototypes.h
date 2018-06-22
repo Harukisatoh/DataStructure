@@ -1,3 +1,7 @@
+/*
+ * @author: Gabriel Haruki Gomes Satô
+ */
+
 //DEFINIÇÃO DE CONSTANTES
 //CONSTANTS DEFINITION
 #define MAX 50 //Define MAX com o valor de 50 / Sets MAX with the value of 50

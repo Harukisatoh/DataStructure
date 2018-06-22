@@ -1,3 +1,7 @@
+/*
+ * @author: Gabriel Haruki Gomes Satô
+ */
+
 //DEFINES E INCLUDES
 //DEFINES AND INCLUDES
 #include <stdio.h> //Biblioteca para entrada e saída / Library for input and output
