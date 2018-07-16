@@ -2,82 +2,66 @@
  * @author: Gabriel Haruki Gomes Satô
  */
 
-#include "prototipos.h"
-
 //Inicializa a fila
 void inicializar (FILA *f) {
     f->inicio = 0;
     f->nmrElem = 0;
 }
 
-//Insere um elemento na fila
-int inserir (FILA *f, REGISTRO reg) {
-
-    int pos_novo = 0;
-
-    //Verifica se a fila está cheia, se sim, retorna 0 e não insere
-    if (f->nmrElem >= MAX) {
-        return 0;
-    }
-
-    //Calcula uma posição livre
-    pos_novo = (f->inicio + f->nmrElem) % MAX;
-
-    //Insere o elemento e incrementa a quantidade de elementos
-    f->A[pos_novo] = reg;
-    f->nmrElem = f->nmrElem + 1;
-
-    return 1;
+//Retorna a quantidade de elementos válidos na fila
+int qtdElem (FILA *f) {
+    return (f->nmrElem);
 }
 
-//Exclui o primeiro elemento inserido na fila
-int excluir (FILA *f) {
-
-    //Verifica se a fila está vazia, se sim, retorna 0 e não exclui
-    if (f->nmrElem <= 0) {
-        return 0;
-    }
-
-    /*
-     * O elemento não é excluido de fato, porém a variável inicio e nmrElem são alterados,
-     * portanto, para o programa o registro pode ser considerado como excluido
-     */
-    f->inicio = (f->inicio + 1) % MAX;
-    f->nmrElem = f->nmrElem - 1;
-
-    return 1;
-}
-
-//Exibe os elementos da fila
+//Exibe todos os elementos válidos da fila
 void exibir (FILA *f) {
-    int i;
+    int temp, i = f->inicio;
 
-    //Percorre a fila elemento por elemento
-    for (i = 0; i < f->nmrElem; i++) {
-        //Imprime os elementos ordenado pela forma em que foram inseridos, o primeiro inserido é imprimido primeiro
-        printf("\n[%d] = %d", i+1, f->A[(f->inicio + i) % MAX].chave);
+    //Executa o loop x vezes, onde x é o número total de elementos válidos da fila
+    for (temp = f->nmrElem; temp > 0; temp--) {
+        //Exibe o elemento atual
+        printf("[%d] ", f->A[i].chave);
+
+        //Calcula qual é o próximo elemento a ser exibido
+        i = (i + 1) % MAX;
     }
 }
 
-//Busca um elemento na fila
-int buscar (FILA *f, TIPOCHAVE ch) {
+//Insere um elemento no final da fila (FIFO)
+void inserir (FILA *f, REGISTRO reg) {
+    int pos;
 
-    int i;
-
-    //Percorre a fila elemento por elemento
-    for (i = 0; i < f->nmrElem; i++) {
-
-        //Verifica se o elemento atual é igual ao elemento buscado, se sim, retorna a posição do elemento
-        if (ch == f->A[(f->inicio + i) % MAX].chave) {
-            return ((f->inicio + i) % MAX);
-        }
-
+    //Verifica se a fila está cheia
+    if (f->nmrElem >= MAX) {
+        printf("ERRO: A fila está cheia!\n");
+        return;
     }
 
-    return -1;
+    //Calcula qual é a posição seguinte em que o vetor está vazio
+    pos = (f->nmrElem + f->inicio) % MAX;
+
+    //Insere o elemento no local calculado anteriormente
+    f->A[pos] = reg;
+    (f->nmrElem)++;
 }
 
-//Reinicializa a fila
-void reiniciar (FILA *f) {
+//Exclui o primeiro elemento que foi inserido na fila (FIFO)
+void excluir (FILA *f, REGISTRO *reg) {
+    //Verifica se a fila está vazia
+    if (f->nmrElem == 0) {
+        printf("ERRO: A fila está vazia!\n");
+        return;
+    }
+
+    //O elemento que será excluido é passado para um local da memória definido pelo usuário
+    *reg = f->A[f->inicio];
+
+    //O início e a quantidade de elementos válidos da fila são atualizados
+    f->inicio = (f->inicio + 1) % MAX;
+    (f->nmrElem)--;
+}
+
+//Reinicia a fila
+void reinicializar (FILA *f) {
     inicializar (f);
 }

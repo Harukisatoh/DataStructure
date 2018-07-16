@@ -5,50 +5,47 @@
 #include "prototipos.h"
 #include "funcoes.c"
 
-//Função principal
 int main () {
 
-    //Aloca uma fila e cria um registro auxiliar
+    //Criação de uma fila e um registro auxiliar
     FILA fila1;
     REGISTRO reg;
 
-    //Inicializa a fila
+    //Inicializando a fila
     inicializar (&fila1);
 
-    //Insere um elemento
-    reg.chave = 30;
-    if(inserir (&fila1, reg) == 0) {
-        printf("Erro ao inserir a chave %d\n", reg.chave);
-    }
+    //Insere um elemento na fila
+    reg.chave = 156;
+    inserir (&fila1, reg);
 
-    //Insere um elemento
-    reg.chave = 20;
-    if(inserir (&fila1, reg) == 0) {
-        printf("Erro ao inserir a chave %d\n", reg.chave);
-    }
+    //Insere um elemento na fila
+    reg.chave = 54;
+    inserir (&fila1, reg);
 
-    //Insere um elemento
-    reg.chave = 15;
-    if(inserir (&fila1, reg) == 0) {
-        printf("Erro ao inserir a chave %d\n", reg.chave);
-    }
+    //Insere um elemento na fila
+    reg.chave = 12;
+    inserir (&fila1, reg);
 
-    //Insere um elemento
-    reg.chave = 55;
-    if(inserir (&fila1, reg) == 0) {
-        printf("Erro ao inserir a chave %d\n", reg.chave);
-    }
+    //Exibe a fila
+    exibir (&fila1);
+    printf("\n");
 
-    //Exclui o primeiro elemento
-    excluir (&fila1);
+    //Exclui um elemento da fila
+    excluir (&fila1, &reg);
 
-    //Insere um elemento
-    reg.chave = 55;
-    if(inserir (&fila1, reg) == 0) {
-        printf("Erro ao inserir a chave %d\n", reg.chave);
-    }
+    //Exibe a fila
+    exibir (&fila1);
 
-    //Exibe toda a fila
+    //Exibe registro com o valor da exclusão efetuada
+    printf("\nREGISTRO: %d\n", reg);
+
+    //Exibe a quantidade de elementos da fila
+    printf("QTD ELEM: %d\n", qtdElem (&fila1));
+
+    //Reiniciar a fila
+    reinicializar (&fila1);
+
+    //Tenta exibir a fila novamente
     exibir (&fila1);
 
     return 0;
